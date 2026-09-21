@@ -3,10 +3,11 @@
 @tailwind utilities;
 
 @media print {
-  body * {
+  body {
     visibility: hidden;
   }
-  #printable-document, #printable-document * {
+  #printable-document,
+  #printable-document * {
     visibility: visible;
   }
   #printable-document {
@@ -16,7 +17,7 @@
     width: 100%;
     margin: 0;
     padding: 20mm;
-    box-shadow: none !important;
-    border: none !important;
+    box-shadow: none;
+    border: none;
   }
 }
