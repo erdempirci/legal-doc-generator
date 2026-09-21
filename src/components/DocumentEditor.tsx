@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { DocumentConfig } from '@/data/documents';
-import EvictionDocPreview from './EvictionDocPreview';
+import DocumentRenderer from './DocumentRenderer';
 import { Download, ShieldCheck } from 'lucide-react';
 
 export default function DocumentEditor({ doc }: { doc: DocumentConfig }) {
@@ -48,7 +48,7 @@ export default function DocumentEditor({ doc }: { doc: DocumentConfig }) {
             <span className="text-2xl font-bold text-neutral-900">{doc.price} TL</span>
           </div>
           <button 
-            className="w-full py-3.5 px-4 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg shadow-md flex items-center justify-center gap-2 transition"
+            className="w-full py-3.5 px-4 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg shadow-md flex items-center justify-center gap-2 transition cursor-pointer"
             onClick={() => window.print()}
           >
             <Download size={18} />
@@ -56,14 +56,14 @@ export default function DocumentEditor({ doc }: { doc: DocumentConfig }) {
           </button>
           <div className="flex items-center justify-center gap-1.5 mt-3 text-neutral-500 text-xs">
             <ShieldCheck size={14} className="text-emerald-600" />
-            <span>256-Bit SSL Güvenli Ödeme & Anında İndirme</span>
+            <span>256-Bit SSL Güvenli Altyapı & Anında Çıktı</span>
           </div>
         </div>
       </div>
 
       <div className="lg:col-span-6 sticky top-6">
         <div className="text-xs font-semibold text-neutral-500 uppercase tracking-wider mb-2">Canlı Belge Önizlemesi</div>
-        <EvictionDocPreview data={formData} isWatermarked={false} />
+        <DocumentRenderer slug={doc.slug} data={formData} />
       </div>
     </div>
   );
