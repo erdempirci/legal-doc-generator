@@ -7,9 +7,8 @@ export async function generateStaticParams() {
   return Object.keys(DOCUMENTS).map((slug) => ({ slug }));
 }
 
-export default async function DocumentPage({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params;
-  const doc = DOCUMENTS[slug];
+export default function DocumentPage({ params }: { params: { slug: string } }) {
+  const doc = DOCUMENTS[params.slug];
 
   if (!doc) {
     notFound();
